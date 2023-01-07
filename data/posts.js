@@ -35,4 +35,22 @@ export const posts = [
       text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       timestamp:'2 days ago'
    },
+   {
+      id:'5',
+      name:"Anne Marie",
+      username:"@annemarie",
+      userImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPO5wSYuNmfUgbklH96ZN732AEOjpWyhkXnQ&usqp=CAU",
+      img:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQikSUYuy-iV5XXBJp5avV7PQKOuvQQjWhqpcdZak8oxAiDDZbA-3k0hby4FYGmn3PlH_0&usqp=CAU',
+      text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      timestamp:'2 days ago'
+   },
+   {
+      id:'5',
+      name:"Jeannette Kona",
+      username:"@jeannetkona",
+      userImage:"https://www.nairaland.com/attachments/7855081_8_jpeg4f84f02beb6427bc9a6d8d09d2376746",
+      img:'http://cdn9.dissolve.com/p/D34_125_006/D34_125_006_0004_600.jpg',
+      text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      timestamp:'2 days ago'
+   },
 ]

@@ -1,12 +1,12 @@
-import Head from 'next/head'
-import { Inter } from '@next/font/google'
-import { Sidebar } from '../components/Sidebar'
-import { Feeds } from '../components/Feeds'
+import Head from "next/head";
+import { Inter } from "@next/font/google";
+import { Sidebar } from "../components/Sidebar";
+import { Feeds } from "../components/Feeds";
+import { Widgets } from "../components/Widgets";
 
+const inter = Inter({ subsets: ["latin"] });
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
+export default function Home({ newsResults, randomUsers }) {
   return (
     <>
       <Head>
@@ -15,11 +15,30 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className='flex min-h-screen max-w-7xl mx-auto'>
-        
-     <Sidebar/>
-     <Feeds/>
+      <main className="flex min-h-screen  mx-auto">
+        <Sidebar />
+        <Feeds />
+        <Widgets
+          newsResults={newsResults.articles}
+          randomUsers={randomUsers.results}
+        />
       </main>
     </>
-  )
+  );
 }
+
+("https://saurav.tech/NewsAPI/top-headlines/category/sports/us.json");
+
+export const getServerSideProps = async () => {
+  const newsResults = await fetch(
+    "https://saurav.tech/NewsAPI/top-headlines/category/technology/us.json"
+  ).then((result) => result.json());
+
+  const randomUsers = await fetch("https://randomuser.me/api/?results=10").then(
+    (user) => user.json()
+  );
+
+  return {
+    props: { newsResults, randomUsers },
+  };
+};
