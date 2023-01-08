@@ -34,7 +34,7 @@ export const CommentModal = () => {
       const postRef = doc(db, "posts", postId);
       onSnapshot(postRef, (snap) => setPost(snap.data()));
     }
-  }, []);
+  }, [postId]);
   const sendData = async () => {
     setLoading(true);
     const commentRef = await addDoc(collection(db, "comments"), {
@@ -73,7 +73,7 @@ export const CommentModal = () => {
         <div className="border-b-2 border-gray-2 my-1"></div>
         <div className="">
           <div className="flex items-center h-16 gap-2 relative">
-            <img
+            <Image
               src={post?.userPicture}
               alt=""
               className=" rounded-full object-cover min-w-[60px] max-h-[60px] "

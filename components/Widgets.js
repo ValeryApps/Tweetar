@@ -13,7 +13,14 @@ export const Widgets = ({ newsResults, randomUsers }) => {
   useEffect(() => {
     setIsMore(newsCount <= newsResults.length);
     setMoreUsers(usersCount <= randomUsers.length);
-  }, [newsCount, setNewsCount, setMoreUsers, usersCount]);
+  }, [
+    newsCount,
+    setNewsCount,
+    setMoreUsers,
+    usersCount,
+    newsResults,
+    randomUsers,
+  ]);
   return (
     <div className="xl:w-[600px] hidden lg:inline ml-8 space-y-5">
       <div className="w-[90%] xl:w-[75%] sticky top-0 bg-white p-2 z-50">
@@ -28,7 +35,7 @@ export const Widgets = ({ newsResults, randomUsers }) => {
       </div>
       <CommentModal />
       <div className="text-gray-700 bg-gray-100 space-y-3 rounded-xl w-[90%] pt-2 xl:w-[75%]">
-        <h1 className="font-bold text-xl px-4">What's happening?</h1>
+        <h1 className="font-bold text-xl px-4">Whats happening?</h1>
         <AnimatePresence>
           {newsResults.slice(0, newsCount).map((article) => (
             <motion.div

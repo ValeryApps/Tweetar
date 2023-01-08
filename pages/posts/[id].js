@@ -25,7 +25,7 @@ const PostPage = ({ newsResults, randomUsers }) => {
     onSnapshot(doc(db, "posts", router.query.id), (snap) => {
       setPost(snap);
     });
-  }, []);
+  }, [router]);
   useEffect(() => {
     onSnapshot(
       query(
@@ -37,7 +37,7 @@ const PostPage = ({ newsResults, randomUsers }) => {
         setComments(snap.docs);
       }
     );
-  }, [db, router]);
+  }, [db, router, router]);
 
   return (
     <>

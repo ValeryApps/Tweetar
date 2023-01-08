@@ -3,7 +3,7 @@ import { getProviders, signIn } from "next-auth/react";
 const signin = ({ providers }) => {
   return (
     <div className="flex justify-center mt-20 space-x-5 ">
-      <img
+      <Image
         src="https://cdn.cms-twdigitalassets.com/content/dam/help-twitter/en/twitter-tips/desktop-assets/ch-01/ch12findphone.png.twimg.1920.png"
         alt="twitter image"
         className="md:w-44 md:h-80 object-cover md:inline rotate-6 hidden"

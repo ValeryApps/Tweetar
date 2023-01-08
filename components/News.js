@@ -1,6 +1,6 @@
 export const News = ({ article }) => {
   return (
-    <a href={article.url} target="_blank">
+    <a href={article.url} target="_blank" rel="noreferrer">
       <div className="flex items-center gap-3 px-4 py-3 border-b-2 hover:bg-gray-200 transition duration-500 ease-in-out">
         <img
           src={article.urlToImage}
