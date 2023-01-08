@@ -4,7 +4,7 @@ import {
   HeartIcon,
   TrashIcon,
 } from "@heroicons/react/24/outline";
-
+import { useRouter } from "next/router";
 import { ChartBarIcon, ShareIcon } from "@heroicons/react/24/solid";
 import {
   arrayRemove,
@@ -20,14 +20,17 @@ import { signIn, useSession } from "next-auth/react";
 import { LoveSvg } from "./LoveSvg";
 import { deleteObject, ref } from "firebase/storage";
 import { useRecoilState } from "recoil";
-import { modalState } from "../atom/modalState";
+import { modalState, postIdState } from "../atom/modalState";
 
 export const Post = ({ post }) => {
+  const router = useRouter();
+
   const { data: session } = useSession();
   const uid = session?.user.uid;
   const currentId = post.data().userId;
 
   const [open, setOpen] = useRecoilState(modalState);
+  const [postId, setPostId] = useRecoilState(postIdState);
 
   const likePost = async () => {
     if (session === null) {
@@ -47,7 +50,14 @@ export const Post = ({ post }) => {
       }
     }
   };
-
+  const commentPost = async () => {
+    if (!session) {
+      await signIn();
+    } else {
+      setOpen(true);
+      setPostId(post.id);
+    }
+  };
   const deletePost = async () => {
     if (currentId !== uid) {
       return;
@@ -57,11 +67,13 @@ export const Post = ({ post }) => {
       if (post.data().image) {
         await deleteObject(ref(storage, `posts/${post.id}/images`));
       }
+      router.push("/");
     }
   };
+
   return (
     <div className="flex space-x-4 my-10 ">
-      <div className="min-w-[60px] max-h-[50px] ">
+      <div className="min-w-[60px] max-h-[50px]">
         <img
           src={post.data().userPicture}
           alt="username"
@@ -89,7 +101,10 @@ export const Post = ({ post }) => {
         <div className="text-gray-600 text-[15px] sm:text-[16px] mb-2">
           {post.data().text}
         </div>
-        <div className="">
+        <div
+          className="cursor-pointer"
+          onClick={() => router.push(`posts/${post.id}`)}
+        >
           <img
             src={post.data().image}
             alt={post.id}
@@ -98,10 +113,14 @@ export const Post = ({ post }) => {
         </div>
 
         <div className="flex justify-between mt-2 mx-2 items-center">
-          <ChatBubbleLeftEllipsisIcon
-            onClick={() => setOpen(!open)}
-            className="max-h-11 w-11 hover-effect p-2 hover:text-sky-600 hover:bg-sky-200"
-          />
+          <div className="flex items-center">
+            <ChatBubbleLeftEllipsisIcon
+              onClick={commentPost}
+              className="max-h-11 w-11 hover-effect p-2 hover:text-sky-600 hover:bg-sky-200"
+            />
+            {post.data()?.commentCount}
+          </div>
+
           {currentId === uid && (
             <TrashIcon
               onClick={deletePost}

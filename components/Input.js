@@ -35,6 +35,8 @@ export const Input = () => {
       name: session.user.name,
       username: session.user.username,
       likes: [],
+      comments: [],
+      commentCount: 0,
       likesCount: 0,
       createdAt: serverTimestamp(),
     });

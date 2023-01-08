@@ -5,7 +5,7 @@ export const LoveSvg = () => {
   return (
     <HeartIcon
       color="red"
-      className="max-h-11 w-11 hover-effect p-2 hover:bg-red-200 "
+      className="max-h-8 w-8 hover-effect p-2 hover:bg-red-200 "
     />
   );
 };

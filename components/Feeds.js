@@ -5,7 +5,6 @@ import { Post } from "./Post";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";
 import { AnimatePresence, motion } from "framer-motion";
-import { CommentModal } from "./CommentModal";
 
 export const Feeds = () => {
   const [posts, setPosts] = useState([]);
@@ -40,7 +39,6 @@ export const Feeds = () => {
           </motion.div>
         ))}
       </AnimatePresence>
-     
     </div>
   );
 };
