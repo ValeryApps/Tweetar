@@ -13,7 +13,7 @@ export const authOptions = {
   pages: {
     signIn: "/auth/signin",
   },
-  SECRET_KEY: wuio3490808034uouos90328,
+  secret: process.env.SECRET_KEY,
   callbacks: {
     session: async ({ session, token }) => {
       session.user.username = session.user.name.replace(" ", "").toLowerCase();
