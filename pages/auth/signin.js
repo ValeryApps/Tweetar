@@ -1,4 +1,5 @@
 import { getProviders, signIn } from "next-auth/react";
+import Image from "next/image";
 
 const signin = ({ providers }) => {
   return (
